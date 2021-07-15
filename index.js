@@ -4,18 +4,24 @@ server.use(express.json())
 const {db : destinations} = require("./DB")
 const {getRandomId} = require("./HELPERS");
 
-//post
+//CREATE =>post
 server.post("/destinations", (req, res) => {
     //generate uniqu id
     const _id = getRandomId();
     const{name, location, photo, description} = req.body
+
+
+// go to unsplash to 
+
+
+
 
     destinations[_id] = {_id, name, location, photo, description};
     
 
     res.send({status: "success"})
 });
-//read//get
+//read =>//get
 server.get("/destinations", (req, res) => {
    res.send(destinations);
 });
@@ -65,6 +71,8 @@ delete destinations[_id]
 res.send("Deleted Successfully")
 });
 
-server.listen(3000, () => {  
+const PORT = process.env.PORT || 3000
+
+server.listen(PORT, () => {  
     console.log("Server listening");
 });
